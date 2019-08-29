@@ -1,0 +1,14 @@
+<form  [formGroup]="FormVega" (ngSubmit)="submit()" novalidate>  
+    <div class="form-group col-sm-4">   
+        <label for="makes" (click)="setFocus2('makes')">Make Name</label>  
+        <select  class="form-control" #makes formControlName="Makename"  (change)="ListModels();" [ngClass]="{ 'is-invalid': submitted && f.Makename.errors }">  
+        <option value="">--Select--</option>  
+        <option *ngFor="let Make of Makes | async" value={{Make.id}}>  
+            {{Make.name}}  
+        </option>  
+        </select>  
+        <div class="alert alert-danger" *ngIf="submitted && f.Makename.errors">
+        <div *ngIf="f.Makename.errors.required">please specify the make.</div>
+        </div>
+    </div>  
+</form>

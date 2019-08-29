@@ -1,0 +1,5 @@
+<h1>Hello, world!</h1>
+<!-- <input #search class="search" type="text" placeholder="Recherche..." (keydown.enter)="onSearch(search.value)"> -->
+
+<ng2-smart-table [settings]="sets" [source]="sourcem" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"
+(createConfirm)="onCreateConfirm($event)"></ng2-smart-table>

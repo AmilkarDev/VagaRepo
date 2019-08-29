@@ -1,0 +1,111 @@
+<p>
+  vega works!
+</p>
+{{ vehicle | json}}
+
+<!-- 
+<div>
+  <div>
+  <label>
+    Email:
+    <input type="text" [formControl]="email">
+  </label>
+</div>
+<div>
+    <div class="form-group">
+        <button (click)="updateEmail()" class="btn btn-dark">Update Email</button>
+      </div>
+</div>
+  <p>
+    Value: {{ email.value }}
+  </p>
+</div> -->
+
+
+
+<div class="card">  
+    <div class="card-header" style="text-align:center"><b>Add new Car</b></div>  
+    <div class="card-body">  
+      <form  [formGroup]="FormVega" (ngSubmit)="submit()" novalidate>  
+          <div class="row">  
+              <div class="form-group col-sm-4">   
+                  <label for="contactname"> Name</label>  
+                  <input type="text" #contactName class="form-control"  formControlName="ContactName"   id="contactname" placeholder="Enter contact Name"  [ngClass]="{ 'is-invalid': submitted && f.ContactName.errors }">  
+                  <div class="alert alert-danger" *ngIf="submitted && f.ContactName.errors">
+                    <div *ngIf="f.ContactName.errors.required">please specify the name.</div>
+                  </div>
+                </div>  
+              <div class="form-group col-sm-4">   
+                <label for="contactPhone"> Phone</label>  
+                <input type="text" #contactPhone class="form-control"  formControlName="contactPhone"   id="contactPhone" placeholder="Enter contact Phone" [ngClass]="{ 'is-invalid': submitted && f.contactPhone.errors }">  
+                <div class="alert alert-danger" *ngIf="submitted && f.contactPhone.errors">
+                  <div *ngIf="f.contactPhone.errors.required">please specify the phone number.</div>
+                </div>
+              </div>  
+
+            <div class="form-group col-sm-4">   
+              <label for="contactEmail"> Email</label>  
+              <input type="text" #contactEmail class="form-control"  formControlName="contactEmail"   id="contactEmail" placeholder="Enter contact Email" >  
+          </div>  
+          </div>
+          <div class="row">
+              <div class="form-group col-sm-4">   
+                  <label for="makes" (click)="setFocus2('makes')">Make Name</label>  
+                  <select  class="form-control" #makes formControlName="Makename"  (change)="ListModels();" [ngClass]="{ 'is-invalid': submitted && f.Makename.errors }">  
+                    <option value="">--Select--</option>  
+                    <option *ngFor="let Make of Makes | async" value={{Make.id}}>  
+                        {{Make.name}}  
+                    </option>  
+                  </select>  
+                  <div class="alert alert-danger" *ngIf="submitted && f.Makename.errors">
+                    <div *ngIf="f.Makename.errors.required">please specify the make.</div>
+                  </div>
+              </div>  
+              <div class="form-group col-sm-4">      
+                  <label for="ModelName" (click)="setFocus3('models')">Model Name</label>  
+                  <select  class="form-control"  #models formControlName="Modelname" [ngClass]="{ 'is-invalid': submitted && f.Modelname.errors }">  
+                    <option value="">--Select--</option>  
+                    <option *ngFor="let Model of Models | async" value={{Model.id}}>  
+                        {{Model.name}}  
+                    </option>  
+                 </select>  
+                 <div class="alert alert-danger" *ngIf="submitted && f.Modelname.errors">
+                  <div *ngIf="f.Modelname.errors.required">please specify the model.</div>
+                </div>
+              </div> 
+              <div class="form-group col-sm-4">
+                  <div>
+                      <label for="Registered" (click)="setFocus4('registered')">Registered</label>  <br>
+                    <input id="false" #registered type="radio" [value]="false" formControlName="Registered">
+                    <label>no          </label><br>
+                    <input id="true" #registered type="radio"  [value]="true"  formControlName="Registered">
+                    <label>  yes </label>
+                  </div>   
+              </div>      
+          </div>  
+          <div class="row">
+              <div class="form-group col-sm-4" formArrayName="features">  
+                  <label for="Features">Features</label> 
+                  
+                <div class="col-xs-12 checkbox"  *ngFor="let item of features; let i = index;">  
+                  <div>
+                    <label class="checkbox">
+                        <input  type="checkbox" [value]="item.id" (change)="onFeatureToggle(item.id,$event)" [checked]="feats.includes(item.id)" >
+                            {{features[i].name}}
+                    </label>    
+                  </div>               
+                </div>
+          </div>      
+          </div>
+          <div class="row">
+            <button value="submit" type="submit" class="btn btn-info my-4 btn-block col-sm-6">submit</button><br>
+            <button value="submit" *ngIf="vehicle.id" type="button" (click)="delete()" class="btn btn-info my-4 btn-block col-sm-6">Delete</button>
+
+          </div>
+      </form>  
+    </div>   
+</div>
+
+
+
+ 
