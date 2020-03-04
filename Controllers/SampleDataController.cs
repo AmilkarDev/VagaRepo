@@ -15,7 +15,8 @@ namespace vegaApp.Controllers
         };
         public string TestGitOp(string bingo)
         {
-            return bingo.ToUpper();
+        string str =bingo.toUpper();
+            return str;
         }
 
         [HttpGet("[action]")]
