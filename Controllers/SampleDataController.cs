@@ -13,6 +13,10 @@ namespace vegaApp.Controllers
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
+        public string TestGitOp(string bingo)
+        {
+            return bingo.ToUpper();
+        }
 
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
